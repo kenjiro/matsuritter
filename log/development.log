@@ -1,0 +1,316 @@
+  [4;36;1mSQL (128.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (22.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (528.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (550.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (7.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (45.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090709005338)
+  [4;35;1mSQL (218.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `pass` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `mail` varchar(255) NOT NULL, `other_url` varchar(255), `self_introduction` varchar(255), `now_place` varchar(255), `follow_nes_flg` tinyint(1), `dm_news_flg` tinyint(1), `nesw_letter_flg` tinyint(1), `design_theme_id` blob, `icon_image_id` blob, `background_image_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (43.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005338')[0m
+Migrating to CreateFavorites (20090709005456)
+  [4;35;1mSQL (213.0ms)[0m   [0mCREATE TABLE `favorites` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (61.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005456')[0m
+Migrating to CreateDesignThemes (20090709005639)
+  [4;35;1mSQL (214.0ms)[0m   [0mCREATE TABLE `design_themes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (56.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005639')[0m
+Migrating to CreateFollows (20090709005754)
+  [4;35;1mSQL (175.0ms)[0m   [0mCREATE TABLE `follows` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (28.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005754')[0m
+Migrating to CreateMails (20090709005942)
+  [4;35;1mSQL (126.0ms)[0m   [0mCREATE TABLE `mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (43.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005942')[0m
+Migrating to CreateAdminUsers (20090709011836)
+  [4;35;1mSQL (181.0ms)[0m   [0mCREATE TABLE `admin_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (50.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709011836')[0m
+Migrating to CreateNewsLetters (20090709011930)
+  [4;35;1mSQL (441.0ms)[0m   [0mCREATE TABLE `news_letters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (86.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709011930')[0m
+Migrating to CreateReturnMails (20090709014900)
+  [4;35;1mSQL (174.0ms)[0m   [0mCREATE TABLE `return_mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709014900')[0m
+Migrating to CreateReturnMutters (20090709015041)
+  [4;35;1mSQL (237.0ms)[0m   [0mCREATE TABLE `return_mutters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (33.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709015041')[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (30.0ms)[0m   [0;1mSHOW FIELDS FROM `admin_users`[0m
+  [4;35;1mSQL (13.0ms)[0m   [0mdescribe `admin_users`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `admin_users`[0m
+  [4;35;1mSQL (13.0ms)[0m   [0mSHOW FIELDS FROM `design_themes`[0m
+  [4;36;1mSQL (13.0ms)[0m   [0;1mdescribe `design_themes`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW KEYS FROM `design_themes`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `favorites`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mdescribe `favorites`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW KEYS FROM `favorites`[0m
+  [4;35;1mSQL (24.0ms)[0m   [0mSHOW FIELDS FROM `follows`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `follows`[0m
+  [4;35;1mSQL (10.0ms)[0m   [0mSHOW KEYS FROM `follows`[0m
+  [4;36;1mSQL (12.0ms)[0m   [0;1mSHOW FIELDS FROM `mails`[0m
+  [4;35;1mSQL (11.0ms)[0m   [0mdescribe `mails`[0m
+  [4;36;1mSQL (7.0ms)[0m   [0;1mSHOW KEYS FROM `mails`[0m
+  [4;35;1mSQL (11.0ms)[0m   [0mSHOW FIELDS FROM `news_letters`[0m
+  [4;36;1mSQL (465.0ms)[0m   [0;1mdescribe `news_letters`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW KEYS FROM `news_letters`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `return_mails`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `return_mails`[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW KEYS FROM `return_mails`[0m
+  [4;35;1mSQL (18.0ms)[0m   [0mSHOW FIELDS FROM `return_mutters`[0m
+  [4;36;1mSQL (13.0ms)[0m   [0;1mdescribe `return_mutters`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW KEYS FROM `return_mutters`[0m
+  [4;36;1mSQL (22.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (19.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (18.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090709005338)
+Migrating to CreateFavorites (20090709005456)
+Migrating to CreateDesignThemes (20090709005639)
+Migrating to CreateFollows (20090709005754)
+Migrating to CreateMails (20090709005942)
+Migrating to CreateAdminUsers (20090709011836)
+Migrating to CreateNewsLetters (20090709011930)
+Migrating to CreateReturnMails (20090709014900)
+Migrating to CreateReturnMutters (20090709015041)
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mSHOW FIELDS FROM `admin_users`[0m
+  [4;36;1mSQL (12.0ms)[0m   [0;1mdescribe `admin_users`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW KEYS FROM `admin_users`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `design_themes`[0m
+  [4;35;1mSQL (96.0ms)[0m   [0mdescribe `design_themes`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `design_themes`[0m
+  [4;35;1mSQL (17.0ms)[0m   [0mSHOW FIELDS FROM `favorites`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mdescribe `favorites`[0m
+  [4;35;1mSQL (5.0ms)[0m   [0mSHOW KEYS FROM `favorites`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mSHOW FIELDS FROM `follows`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mdescribe `follows`[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mSHOW KEYS FROM `follows`[0m
+  [4;35;1mSQL (13.0ms)[0m   [0mSHOW FIELDS FROM `mails`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `mails`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW KEYS FROM `mails`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `news_letters`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mdescribe `news_letters`[0m
+  [4;36;1mSQL (498.0ms)[0m   [0;1mSHOW KEYS FROM `news_letters`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `return_mails`[0m
+  [4;36;1mSQL (106.0ms)[0m   [0;1mdescribe `return_mails`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW KEYS FROM `return_mails`[0m
+  [4;36;1mSQL (13.0ms)[0m   [0;1mSHOW FIELDS FROM `return_mutters`[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mdescribe `return_mutters`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `return_mutters`[0m
+  [4;35;1mSQL (23.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (70.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (89.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (444.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090709005338)
+  [4;35;1mSQL (98.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `pass` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `mail` varchar(255) NOT NULL, `other_url` varchar(255), `self_introduction` varchar(255), `now_place` varchar(255), `follow_nes_flg` tinyint(1), `dm_news_flg` tinyint(1), `nesw_letter_flg` tinyint(1), `design_theme_id` blob, `icon_image_id` blob, `background_image_id` int(11), `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005338')[0m
+Migrating to CreateFavorites (20090709005456)
+  [4;35;1mSQL (117.0ms)[0m   [0mCREATE TABLE `favorites` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (25.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005456')[0m
+Migrating to CreateDesignThemes (20090709005639)
+  [4;35;1mSQL (84.0ms)[0m   [0mCREATE TABLE `design_themes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (12.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005639')[0m
+Migrating to CreateFollows (20090709005754)
+  [4;35;1mSQL (117.0ms)[0m   [0mCREATE TABLE `follows` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (26.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005754')[0m
+Migrating to CreateMails (20090709005942)
+  [4;35;1mSQL (93.0ms)[0m   [0mCREATE TABLE `mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (25.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005942')[0m
+Migrating to CreateAdminUsers (20090709011836)
+  [4;35;1mSQL (101.0ms)[0m   [0mCREATE TABLE `admin_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (26.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709011836')[0m
+Migrating to CreateNewsLetters (20090709011930)
+  [4;35;1mSQL (84.0ms)[0m   [0mCREATE TABLE `news_letters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (28.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709011930')[0m
+Migrating to CreateReturnMails (20090709014900)
+  [4;35;1mSQL (137.0ms)[0m   [0mCREATE TABLE `return_mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (30.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709014900')[0m
+Migrating to CreateReturnMutters (20090709015041)
+  [4;35;1mSQL (79.0ms)[0m   [0mCREATE TABLE `return_mutters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (30.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709015041')[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mSHOW FIELDS FROM `admin_users`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mdescribe `admin_users`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW KEYS FROM `admin_users`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `design_themes`[0m
+  [4;36;1mSQL (13.0ms)[0m   [0;1mdescribe `design_themes`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW KEYS FROM `design_themes`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mSHOW FIELDS FROM `favorites`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `favorites`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `favorites`[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mSHOW FIELDS FROM `follows`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `follows`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW KEYS FROM `follows`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mSHOW FIELDS FROM `mails`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mdescribe `mails`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `mails`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mSHOW FIELDS FROM `news_letters`[0m
+  [4;36;1mSQL (234.0ms)[0m   [0;1mdescribe `news_letters`[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mSHOW KEYS FROM `news_letters`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mSHOW FIELDS FROM `return_mails`[0m
+  [4;35;1mSQL (108.0ms)[0m   [0mdescribe `return_mails`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `return_mails`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mSHOW FIELDS FROM `return_mutters`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mdescribe `return_mutters`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW KEYS FROM `return_mutters`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (20.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (168.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (38.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (233.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (248.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090709005338)
+Migrating to CreateFavorites (20090709005456)
+Migrating to CreateDesignThemes (20090709005639)
+Migrating to CreateFollows (20090709005754)
+Migrating to CreateMails (20090709005942)
+Migrating to CreateAdminUsers (20090709011836)
+Migrating to CreateNewsLetters (20090709011930)
+Migrating to CreateReturnMails (20090709014900)
+Migrating to CreateReturnMutters (20090709015041)
+Migrating to CreateMutters (20090709025144)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: BLOB/TEXT column 'delete_flg' can't have a default value: CREATE TABLE `mutters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `res_flg` int(11), `return_mutters_id` int(11), `mutter` text, `image` blob, `delete_flg` blob DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090709005338)
+Migrating to CreateFavorites (20090709005456)
+Migrating to CreateDesignThemes (20090709005639)
+Migrating to CreateFollows (20090709005754)
+Migrating to CreateMails (20090709005942)
+Migrating to CreateAdminUsers (20090709011836)
+Migrating to CreateNewsLetters (20090709011930)
+Migrating to CreateReturnMails (20090709014900)
+Migrating to CreateReturnMutters (20090709015041)
+Migrating to CreateMutters (20090709025144)
+  [4;36;1mSQL (444.0ms)[0m   [0;1mCREATE TABLE `mutters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `res_flg` int(11), `return_mutters_id` int(11), `mutter` text, `image` blob, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (43.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090709025144')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (153.0ms)[0m   [0mSHOW FIELDS FROM `admin_users`[0m
+  [4;36;1mSQL (27.0ms)[0m   [0;1mdescribe `admin_users`[0m
+  [4;35;1mSQL (24.0ms)[0m   [0mSHOW KEYS FROM `admin_users`[0m
+  [4;36;1mSQL (57.0ms)[0m   [0;1mSHOW FIELDS FROM `design_themes`[0m
+  [4;35;1mSQL (13.0ms)[0m   [0mdescribe `design_themes`[0m
+  [4;36;1mSQL (19.0ms)[0m   [0;1mSHOW KEYS FROM `design_themes`[0m
+  [4;35;1mSQL (40.0ms)[0m   [0mSHOW FIELDS FROM `favorites`[0m
+  [4;36;1mSQL (11.0ms)[0m   [0;1mdescribe `favorites`[0m
+  [4;35;1mSQL (9.0ms)[0m   [0mSHOW KEYS FROM `favorites`[0m
+  [4;36;1mSQL (56.0ms)[0m   [0;1mSHOW FIELDS FROM `follows`[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mdescribe `follows`[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mSHOW KEYS FROM `follows`[0m
+  [4;35;1mSQL (38.0ms)[0m   [0mSHOW FIELDS FROM `mails`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mdescribe `mails`[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mSHOW KEYS FROM `mails`[0m
+  [4;36;1mSQL (30.0ms)[0m   [0;1mSHOW FIELDS FROM `mutters`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `mutters`[0m
+  [4;36;1mSQL (276.0ms)[0m   [0;1mSHOW KEYS FROM `mutters`[0m
+  [4;35;1mSQL (45.0ms)[0m   [0mSHOW FIELDS FROM `news_letters`[0m
+  [4;36;1mSQL (11.0ms)[0m   [0;1mdescribe `news_letters`[0m
+  [4;35;1mSQL (7.0ms)[0m   [0mSHOW KEYS FROM `news_letters`[0m
+  [4;36;1mSQL (37.0ms)[0m   [0;1mSHOW FIELDS FROM `return_mails`[0m
+  [4;35;1mSQL (11.0ms)[0m   [0mdescribe `return_mails`[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW KEYS FROM `return_mails`[0m
+  [4;35;1mSQL (34.0ms)[0m   [0mSHOW FIELDS FROM `return_mutters`[0m
+  [4;36;1mSQL (11.0ms)[0m   [0;1mdescribe `return_mutters`[0m
+  [4;35;1mSQL (20.0ms)[0m   [0mSHOW KEYS FROM `return_mutters`[0m
+  [4;36;1mSQL (61.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (22.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (139.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (274.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090709005338)
+  [4;35;1mSQL (97.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `pass` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `mail` varchar(255) NOT NULL, `other_url` varchar(255), `self_introduction` varchar(255), `now_place` varchar(255), `follow_news_flg` tinyint(1), `dm_news_flg` tinyint(1), `nesw_letter_flg` tinyint(1), `design_theme_id` blob, `icon_image_id` blob, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (17.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005338')[0m
+Migrating to CreateFavorites (20090709005456)
+  [4;35;1mSQL (108.0ms)[0m   [0mCREATE TABLE `favorites` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `mutter_id` int(11) NOT NULL, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (27.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005456')[0m
+Migrating to CreateDesignThemes (20090709005639)
+  [4;35;1mSQL (103.0ms)[0m   [0mCREATE TABLE `design_themes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `image` blob NOT NULL, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005639')[0m
+Migrating to CreateFollows (20090709005754)
+  [4;35;1mSQL (127.0ms)[0m   [0mCREATE TABLE `follows` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `follow_user_id` int(11) NOT NULL, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (37.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005754')[0m
+Migrating to CreateMails (20090709005942)
+  [4;35;1mSQL (133.0ms)[0m   [0mCREATE TABLE `mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `send_user_id` int(11) NOT NULL, `receive_user_id` int(11) NOT NULL, `return_mails_id` int(11) NOT NULL, `res_flg` int(11) NOT NULL, `direct_receive_mail_id` int(11), `message` text, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709005942')[0m
+Migrating to CreateAdminUsers (20090709011836)
+  [4;35;1mSQL (90.0ms)[0m   [0mCREATE TABLE `admin_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login_account` varchar(45), `pass` varchar(45), `name` varchar(255), `created_at` datetime, `updated_at` datetime, `lock_version` varchar(255), `delete_flg` tinyint(1) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;36;1mSQL (25.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090709011836')[0m
+Migrating to CreateNewsLetters (20090709011930)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090709005338)
+Migrating to CreateFavorites (20090709005456)
+Migrating to CreateDesignThemes (20090709005639)
+Migrating to CreateFollows (20090709005754)
+Migrating to CreateMails (20090709005942)
+Migrating to CreateAdminUsers (20090709011836)
+Migrating to CreateNewsLetters (20090709011930)
+  [4;36;1mSQL (85.0ms)[0m   [0;1mCREATE TABLE `news_letters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `subject` varchar(255), `body` text, `preview_flg` tinyint(1), `delete_flg` tinyint(1) DEFAULT 0, `send_at` datetime, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (19.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090709011930')[0m
+Migrating to CreateReturnMails (20090709014900)
+  [4;36;1mSQL (79.0ms)[0m   [0;1mCREATE TABLE `return_mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `mail_id` int(11), `created_at` datetime, `updated_at` datetime, `lock_version` int(11), `delete_flg` tinyint(1) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;35;1mSQL (21.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090709014900')[0m
+Migrating to CreateReturnMutters (20090709015041)
+  [4;36;1mSQL (70.0ms)[0m   [0;1mCREATE TABLE `return_mutters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `mutter_id` int(11) NOT NULL, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (20.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090709015041')[0m
+Migrating to CreateMutters (20090709025144)
+  [4;36;1mSQL (92.0ms)[0m   [0;1mCREATE TABLE `mutters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `res_flg` int(11), `return_mutters_id` int(11), `mutter` text, `image` blob, `delete_flg` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `lock_version` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (18.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090709025144')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (32.0ms)[0m   [0mSHOW FIELDS FROM `admin_users`[0m
+  [4;36;1mSQL (26.0ms)[0m   [0;1mdescribe `admin_users`[0m
+  [4;35;1mSQL (37.0ms)[0m   [0mSHOW KEYS FROM `admin_users`[0m
+  [4;36;1mSQL (11.0ms)[0m   [0;1mSHOW FIELDS FROM `design_themes`[0m
+  [4;35;1mSQL (11.0ms)[0m   [0mdescribe `design_themes`[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW KEYS FROM `design_themes`[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mSHOW FIELDS FROM `favorites`[0m
+  [4;36;1mSQL (12.0ms)[0m   [0;1mdescribe `favorites`[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mSHOW KEYS FROM `favorites`[0m
+  [4;36;1mSQL (11.0ms)[0m   [0;1mSHOW FIELDS FROM `follows`[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mdescribe `follows`[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSHOW KEYS FROM `follows`[0m
+  [4;35;1mSQL (56.0ms)[0m   [0mSHOW FIELDS FROM `mails`[0m
+  [4;36;1mSQL (13.0ms)[0m   [0;1mdescribe `mails`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW KEYS FROM `mails`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mSHOW FIELDS FROM `mutters`[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mdescribe `mutters`[0m
+  [4;36;1mSQL (289.0ms)[0m   [0;1mSHOW KEYS FROM `mutters`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `news_letters`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `news_letters`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW KEYS FROM `news_letters`[0m
+  [4;36;1mSQL (19.0ms)[0m   [0;1mSHOW FIELDS FROM `return_mails`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mdescribe `return_mails`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW KEYS FROM `return_mails`[0m
+  [4;35;1mSQL (18.0ms)[0m   [0mSHOW FIELDS FROM `return_mutters`[0m
+  [4;36;1mSQL (14.0ms)[0m   [0;1mdescribe `return_mutters`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSHOW KEYS FROM `return_mutters`[0m
+  [4;36;1mSQL (36.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
