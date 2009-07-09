@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.binary :icon_image_id
       t.boolean :delete_flg , :default  => 0
       t.timestamps
-      t.integer :lock_version
+      t.integer :lock_version, :default  => 0
     end
 
   end

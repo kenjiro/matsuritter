@@ -8,7 +8,7 @@ class CreateMutters < ActiveRecord::Migration
       t.binary  :image
       t.boolean :delete_flg , :default  => 0
       t.timestamps
-      t.integer :lock_version
+      t.integer :lock_version, :default  => 0
     end
   end
 

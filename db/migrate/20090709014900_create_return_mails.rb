@@ -5,6 +5,7 @@ class CreateReturnMails < ActiveRecord::Migration
       t.timestamps
       t.integer :lock_version
       t.boolean :delete_flg , :default  => 0
+       t.integer :lock_version, :default  => 0
     end
   end
 
