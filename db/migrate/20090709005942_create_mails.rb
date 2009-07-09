@@ -4,6 +4,7 @@ class CreateMails < ActiveRecord::Migration
       t.integer :send_user_id ,:null => false
       t.integer :receive_user_id ,:null => false
       t.integer :return_mails_id ,:null => false
+      t.string :subject ,:size => 500
       t.integer :res_flg ,:null => false
       t.integer :direct_receive_mail_id
       t.text :message

@@ -1,8 +1,8 @@
 class CreateAdminUsers < ActiveRecord::Migration
   def self.up
     create_table :admin_users do |t|
-      t.string :login_account ,:limit =>45
-      t.string :pass ,:limit => 45
+      t.string :login_account ,:limit =>50
+      t.string :pass ,:limit => 50
       t.string :name
       t.timestamps
       t.string :lock_version
