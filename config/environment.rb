@@ -16,6 +16,10 @@ Rails::Initializer.run do |config|
   # -- all .rb files in that directory are automatically loaded.
   # See Rails::Configuration for more options.
 
+
+  
+
+
   # Skip frameworks you're not going to use. To use Rails without a database
   # you must remove the Active Record framework.
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
@@ -55,10 +59,12 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_matsuritter_session',
-    :secret      => '49b7fe476f4cbb825d9d68badbead82cfe667fbf5c059a4b2234590e81119e0bd6aa3a7823d217f51077793c43330b655bd02ef33d566b75e46f180eb8064387'
+    :session_key => '_test_session',
+    :secret      => '49bsadfaaejf1982u13eefj2fhaha84ad02ef33d566b75e46f180eb8064387'
   }
 
+  config.action_controller.session_store = :mem_cache_store
+  
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")
@@ -73,3 +79,11 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
+
+memcache_options = {
+  :readonly => false
+}
+memcache_servers = [ '127.0.0.1:11211' ]
+SESSION_CACHE = MemCache.new(memcache_servers,
+                             memcache_options.merge(:namespace => "matsuritter-session-#{ENV['RAILS_ENV']}"))
+ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS.merge!('cache' => SESSION_CACHE)
