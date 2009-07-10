@@ -8,20 +8,19 @@
 
   </head>
       <body>
-        <h1><%=  session[:test]  %></h1>
         <table>
           <tr>
             <td>
-            <%= link_to 'ユーザー管理' ,:controller => 'admin/users', :action => 'index' %>
+            <%= link_to '新規作成' ,:controller => 'admin/newsletter', :action => 'create' %>
             </td>
             <td>
-            <%= link_to 'ニュースレター' ,:controller => 'admin/news_letter', :action => 'index' %>
+            <%= link_to '送信済み' ,:controller => 'admin/newsletter', :action => 'history' %>
             </td>
-           
-
+          
+          
         </table>
-
-
+        
+        
       </body>
 </html>
 
