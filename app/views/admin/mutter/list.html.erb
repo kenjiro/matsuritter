@@ -1,0 +1,15 @@
+<h1>Admin::Mutter#list</h1>
+<table border="1">
+  <tr>
+    <th>ユーザ名</th>
+    <th>つぶやき</th>
+  </tr>
+  <% for mutter in @mutters %>
+  <tr>
+    <td><%= mutter.user.name %></td>
+    <td><%= mutter.mutter %></td>
+  </tr>
+  <% end %>
+</table>
+
+
