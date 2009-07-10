@@ -12,9 +12,9 @@
 ActiveRecord::Schema.define(:version => 20090709025144) do
 
   create_table "admin_users", :force => true do |t|
-    t.string   "login_account", :limit => 45
-    t.string   "pass",          :limit => 45
-    t.string   "name"
+    t.string   "login_account", :limit => 50,                    :null => false
+    t.string   "pass",          :limit => 50,                    :null => false
+    t.string   "name",                                           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "lock_version"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20090709025144) do
     t.boolean  "delete_flg",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version", :default => 0
   end
 
   create_table "favorites", :force => true do |t|
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20090709025144) do
     t.boolean  "delete_flg",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version", :default => 0
   end
 
   create_table "follows", :force => true do |t|
@@ -44,51 +44,52 @@ ActiveRecord::Schema.define(:version => 20090709025144) do
     t.boolean  "delete_flg",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version",   :default => 0
   end
 
   create_table "mails", :force => true do |t|
-    t.integer  "send_user_id",                              :null => false
-    t.integer  "receive_user_id",                           :null => false
-    t.integer  "return_mails_id",                           :null => false
-    t.integer  "res_flg",                                   :null => false
+    t.integer  "send_user_id",                                             :null => false
+    t.integer  "receive_user_id",                                          :null => false
+    t.integer  "return_mails_id",                                          :null => false
+    t.string   "subject",                :limit => 500
+    t.boolean  "res_flg",                               :default => false, :null => false
     t.integer  "direct_receive_mail_id"
     t.text     "message"
-    t.boolean  "delete_flg",             :default => false
+    t.boolean  "delete_flg",                            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version",                          :default => 0
   end
 
   create_table "mutters", :force => true do |t|
     t.integer  "user_id",                              :null => false
-    t.integer  "res_flg"
+    t.boolean  "res_flg",           :default => false, :null => false
     t.integer  "return_mutters_id"
     t.text     "mutter"
     t.binary   "image"
     t.boolean  "delete_flg",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version",      :default => 0
   end
 
   create_table "news_letters", :force => true do |t|
-    t.string   "subject"
+    t.string   "subject",      :limit => 500
     t.text     "body"
-    t.boolean  "preview_flg"
-    t.boolean  "delete_flg",   :default => false
+    t.boolean  "preview_flg",                 :default => false
+    t.boolean  "delete_flg",                  :default => false
     t.datetime "send_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version",                :default => 0
   end
 
   create_table "return_mails", :force => true do |t|
     t.integer  "mail_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
     t.boolean  "delete_flg",   :default => false
+    t.integer  "lock_version", :default => 0
   end
 
   create_table "return_mutters", :force => true do |t|
@@ -96,25 +97,25 @@ ActiveRecord::Schema.define(:version => 20090709025144) do
     t.boolean  "delete_flg",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version", :default => 0
   end
 
   create_table "users", :force => true do |t|
-    t.string   "pass",                                 :null => false
-    t.string   "name",                                 :null => false
-    t.string   "mail",                                 :null => false
+    t.string   "pass",              :limit => 50,                    :null => false
+    t.string   "name",              :limit => 50,                    :null => false
+    t.string   "mail",                                               :null => false
     t.string   "other_url"
     t.string   "self_introduction"
     t.string   "now_place"
-    t.boolean  "follow_news_flg"
-    t.boolean  "dm_news_flg"
-    t.boolean  "nesw_letter_flg"
-    t.binary   "design_theme_id"
-    t.binary   "icon_image_id"
-    t.boolean  "delete_flg",        :default => false
+    t.boolean  "follow_news_flg",                 :default => false
+    t.boolean  "dm_news_flg",                     :default => false
+    t.boolean  "nesw_letter_flg",                 :default => false
+    t.integer  "design_theme_id",                 :default => 0
+    t.binary   "icon_image"
+    t.boolean  "delete_flg",                      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version"
+    t.integer  "lock_version",                    :default => 0
   end
 
 end

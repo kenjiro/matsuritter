@@ -3,9 +3,8 @@ class CreateReturnMails < ActiveRecord::Migration
     create_table :return_mails do |t|
       t.integer :mail_id
       t.timestamps
-      t.integer :lock_version
       t.boolean :delete_flg , :default  => 0
-       t.integer :lock_version, :default  => 0
+      t.integer :lock_version, :default  => 0
     end
   end
 
