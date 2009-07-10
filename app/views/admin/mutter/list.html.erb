@@ -1,15 +1,42 @@
-<h1>Admin::Mutter#list</h1>
+<h1>つぶやき一覧</h1>
+<% form_for @mutter_serach, :url=>{:action => 'list'} do |f| %>
+  <p>ユーザ名：<%= f.text_field :user_name %></p>
+  <p>つぶやき：<%= f.text_field :mutter %></p>
+  <p>つぶやき日：<%= f.date_select :start_date, {:use_month_numbers => true, :start_year => Time.now.year}  %>～
+                <%= f.date_select :end_date, {:use_month_numbers => true, :start_year => Time.now.year}  %></p>
+<%= submit_tag "検索", :name => "serach" %>
+<% end %>
 <table border="1">
   <tr>
-    <th>ユーザ名</th>
-    <th>つぶやき</th>
+    <th>
+      ユーザ名
+      <%= link_to "↑", {:action => :list, :order => "users.name asc"} %>
+      <%= link_to "↓", {:action => :list, :order => "users.name desc"} %>
+    </th>
+    <th>
+      つぶやき
+      <%= link_to "↑", {:action => :list, :order => "mutter asc"} %>
+      <%= link_to "↓", {:action => :list, :order => "mutter desc"} %>
+    </th>
+    <th>
+      つぶやき日
+      <%= link_to "↑", {:action => :list, :order => "mutters.created_at asc"} %>
+      <%= link_to "↓", {:action => :list, :order => "mutters.created_at desc"} %>
+    </th>
+    <th>
+      機能
+    </th>
   </tr>
-  <% for mutter in @mutters %>
+  <% for mutter in @mutter_list %>
   <tr>
-    <td><%= mutter.user.name %></td>
-    <td><%= mutter.mutter %></td>
+    <td><%= h(mutter.user.name) %></td>
+    <td><%= h(mutter.mutter) %></td>
+    <td><%= h(mutter.created_at) %></td>
+    <td><%= link_to "削除", {:action => :delete, :id=> h(mutter.id)} %></td>
   </tr>
   <% end %>
 </table>
+
+<%= will_paginate @mutter_list, :prev_label => '&#171;前', :next_label => '次&#187;' %>
 
 
