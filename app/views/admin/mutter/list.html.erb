@@ -2,8 +2,8 @@
 <% form_for @mutter_serach, :url=>{:action => 'list'} do |f| %>
   <p>ユーザ名：<%= f.text_field :user_name %></p>
   <p>つぶやき：<%= f.text_field :mutter %></p>
-  <p>つぶやき日：<%= f.date_select :start_date, {:use_month_numbers => true, :start_year => Time.now.year}  %>～
-                <%= f.date_select :end_date, {:use_month_numbers => true, :start_year => Time.now.year}  %></p>
+  <p>つぶやき日：<%= f.datetime_select :start_date, {:use_month_numbers => true, :start_year => Time.now.year}  %>～
+                <%= f.datetime_select :end_date, {:use_month_numbers => true, :start_year => Time.now.year}  %></p>
 <%= submit_tag "検索", :name => "serach" %>
 <% end %>
 <table border="1">
@@ -31,7 +31,7 @@
   <tr>
     <td><%= h(mutter.user.name) %></td>
     <td><%= h(mutter.mutter) %></td>
-    <td><%= h(mutter.created_at) %></td>
+    <td><%= AppDaate.date_format_yyyymmddhhmmss(mutter.created_at) %></td>
     <td><%= link_to "削除", {:action => :delete, :id=> h(mutter.id)} %></td>
   </tr>
   <% end %>
