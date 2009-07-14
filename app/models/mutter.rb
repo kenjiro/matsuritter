@@ -33,4 +33,19 @@ class Mutter < ActiveRecord::Base
                              :per_page => 2)
   end
 
+  def self.find_home(user_id)
+    find(:all,
+         :conditions => ["(user_id = ? or user_id = (select follow_user_id from follows where user_id = ? and delete_flg = 0)) and delete_flg = 0", user_id, user_id],
+         :order => "created_at DESC"
+    )
+  end
+
+  def self.find_profile(user_id)
+  end
+
+  def self.find_favorites(user_id)
+  end
+
+  def self.find_replies(user_id)
+  end
 end

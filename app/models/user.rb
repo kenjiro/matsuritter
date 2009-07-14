@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many   :mutters
+  has_many :follows
 
   def validate
     if name.to_s.empty?

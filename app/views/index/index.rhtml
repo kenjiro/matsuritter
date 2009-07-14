@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Matsuritter</title>
+</head>
+<body>
+<% form_for :mutter_form, :url => {:action => :contribute} do |form| %>
+  <%= form.text_area(:mutter, :cols => 60, :rows => 3) %>
+  <%= form.text_field(:user_id, :value => @user_id) %>
+  <%= submit_tag "投稿する" %>
+<% end %>
+
+<% for mutter in @mutters %>
+  <div>
+    <%= h(mutter.user.name) %>
+    <%= h(mutter.mutter) %><br />
+    <%= mutter.updated_at.to_s(:long) %><br />
+    <% if mutter.user_id == @user_id %>
+      <%= link_to("削除", :action => "delete", :id => mutter.id) %>
+    <% end %>
+  </div>
+  <br />
+<% end %>
+
+</body>
+</html>
