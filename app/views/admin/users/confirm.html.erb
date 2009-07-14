@@ -1,23 +1,22 @@
-
-<h1>以下の情報で登録してよろしいですか？</h1>
+<br>
+<p><h1>以下の情報で登録してよろしいですか？</h1></p>
 
 <% form_for @user, :url=>{:action => 'create'} do |f| %>
-  
+ <%= f.error_messages %>
     名前<br>
    <%=h @user.name %><br>
     パスワード<br>
     <%=h @user.pass %><br>
      パスワード<br>
+    名前<br>
     <%=h @user.mail %><br>
    <%=  f.hidden_field :name%>
    <%=  f.hidden_field :pass%>
    <%=  f.hidden_field :mail%>
-     <%= f.submit '投稿' %>
-
+    <%= f.submit '登録'  %>
+    <%= f.submit '戻る', :name => "fix" %>
 <% end %>
 
-<%= link_to('投稿', :action =>'create') %>
+
 
 <%= link_to('ユーザー管理に戻る', :action =>'') %>
-
-

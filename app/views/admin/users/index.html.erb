@@ -1,19 +1,13 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
-
-<html>
-  <head>
-
-  </head>
-      <body>
+   
         <table>
           <tr>
             <td>
             <%= link_to 'ユーザー登録' ,:controller => 'admin/users', :action => 'new' %>
             </td>
           </tr>
+          <tr><td>
+           <%= text_field_with_auto_complete :user, :name, :value => @keyword %>
+          </tr></td>
           <% if @users.size == 0 %>
           <tr><td>現在、ユーザーは一名もいません</td></tr>
           <% else %>
@@ -21,12 +15,8 @@
               <% @users.each do |user| %>
           <tr>
              <td><%=h user.name %></td><td><%=h user.mail %></td>
-             <td><%= link_to('削除', {:action =>'delete', :id => user.id},{:method => :delete, :confirm => "yra"}) %>
+             <td><%= link_to('削除', {:action =>'delete', :id => user.id},{:method => :delete, :confirm => "削除いたしますか？"}) %>
           </tr>
              <% end %>
           <% end %>
       </table>
-        
-        
-      </body>
-</html>

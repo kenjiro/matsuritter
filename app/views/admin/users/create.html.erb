@@ -1,15 +1,8 @@
 
 
-<h1>以下の内容で登録しました！</h1>
-    名前<br>
-   <%=h @user.name %><br>
-    パスワード<br>
-    <%=h @user.pass %><br>
-   
 
-
-
-
-<%= link_to('ユーザー管理に戻る', :action =>'') %>
-
-
+  <% form_for @user, :url=>{:action => 'confirm'} do |f| %>
+  <%= f.error_messages %>
+  <% end %>
+    
+  <%= link_to('ユーザー管理に戻る', :action =>'') %>
