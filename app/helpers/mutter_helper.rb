@@ -1,3 +1,3 @@
 module MutterHelper
-  require 'app_date'
+  include AppDate
 end
