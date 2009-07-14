@@ -10,7 +10,7 @@
 <body>
 <% form_for :mutter_form, :url => {:action => :contribute} do |form| %>
   <%= form.text_area(:mutter, :cols => 60, :rows => 3) %>
-  <%= form.text_field(:user_id, :value => @user_id) %>
+  <%= form.text_field(:user_id, :value => @user.id) %>
   <%= submit_tag "投稿する" %>
 <% end %>
 
@@ -19,9 +19,20 @@
     <%= h(mutter.user.name) %>
     <%= h(mutter.mutter) %><br />
     <%= mutter.updated_at.to_s(:long) %><br />
-    <% if mutter.user_id == @user_id %>
-      <%= link_to("削除", :action => "delete", :id => mutter.id) %>
+
+    <% if mutter.user_id == @user.id %>
+      <%= link_to("削除", {:action => "delete", :id => mutter.id}, :confirm => "本当に削除しますか？") %>
     <% end %>
+
+    <% if Favorite.find_favorite(@user.id, mutter.id).blank? %>
+      <%= link_to("お気に入り", {:action => "favorite_regist", :id => mutter.id}) %>
+    <% else %>
+      <%= link_to("お気に入り削除", {:action => "favorite_delete", :id => mutter.id}) %>
+    <% end %>
+
+
+
+    
   </div>
   <br />
 <% end %>

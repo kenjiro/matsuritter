@@ -1,5 +1,6 @@
 class Mutter < ActiveRecord::Base
   belongs_to :user
+  has_many :favorites
 
   def self.serach_and_paginate(obj, page, order)
    #条件式作成
