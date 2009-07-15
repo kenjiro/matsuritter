@@ -1,12 +1,22 @@
 class IndexController < ApplicationController
+  include AppDate
+
   def index
     session[:user_id] = 1
     @user = User.find(session[:user_id])
-
     @mutters = Mutter.find_home(@user.id)
-    @favorites = Favorite.find_all_by_user_id(@user.id, :conditions => "delete_flg = 0")
   end
-  
+
+  def favorite
+    @user = User.find(session[:user_id])
+    @mutters = Mutter.find_favorites(@user.id)
+  end
+
+  def profile
+    @user = User.find(session[:user_id])
+    @mutters = Mutter.find_profile(@user.id)
+  end
+
   def contribute
     unless params[:mutter_form][:mutter].blank?
       mutter = Mutter.new
@@ -21,7 +31,7 @@ class IndexController < ApplicationController
     mutter = Mutter.find(params[:id])
     mutter.delete_flg = 1
     mutter.save
-    redirect_to("/index/")
+    redirect_to(request.referer)
   end
 
   def favorite_regist
@@ -39,6 +49,6 @@ class IndexController < ApplicationController
     favorite = Favorite.find_favorite(session[:user_id], params[:id])
     favorite.delete_flg = 1
     favorite.save
-    redirect_to("/index/")
+    redirect_to(request.referer)
   end
 end

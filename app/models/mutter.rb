@@ -41,10 +41,19 @@ class Mutter < ActiveRecord::Base
     )
   end
 
-  def self.find_profile(user_id)
+  def self.find_favorites(user_id)
+    find(:all,
+         :include => "favorites",
+         :conditions => ["favorites.user_id = ? and favorites.delete_flg =0 and mutters.delete_flg = 0", user_id],
+         :order => "mutters.created_at DESC"
+    )
   end
 
-  def self.find_favorites(user_id)
+  def self.find_profile(user_id)
+    find(:all,
+         :conditions => ["user_id = ? and delete_flg = 0", user_id],
+         :order => "created_at DESC"
+    )
   end
 
   def self.find_replies(user_id)
