@@ -1,6 +1,9 @@
 class Mutter < ActiveRecord::Base
   belongs_to :user
   has_many :favorites
+  belongs_to :return_mutter
+
+  validates_length_of(:mutter, :maximum => 140)
 
   def self.serach_and_paginate(obj, page, order)
    #条件式作成
@@ -43,7 +46,7 @@ class Mutter < ActiveRecord::Base
 
   def self.find_favorites(user_id)
     find(:all,
-         :include => "favorites",
+         :include => :favorites,
          :conditions => ["favorites.user_id = ? and favorites.delete_flg =0 and mutters.delete_flg = 0", user_id],
          :order => "mutters.created_at DESC"
     )
@@ -57,5 +60,10 @@ class Mutter < ActiveRecord::Base
   end
 
   def self.find_replies(user_id)
+    find(:all,
+         :include => :return_mutter,
+         :conditions => ["return_mutters.user_id = ? and mutters.delete_flg = 0 and return_mutters.delete_flg = 0", user_id],
+         :order => "mutters.created_at DESC"
+    )
   end
 end

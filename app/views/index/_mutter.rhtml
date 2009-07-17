@@ -6,6 +6,8 @@
 
     <% if mutter.user_id == @user.id %>
       <%= link_to("削除", {:action => "delete", :id => mutter.id}, :confirm => "本当に削除しますか？") %>
+    <% else %>
+      <%= link_to("返事する", {:action => "reply", :id => mutter.id}) %>
     <% end %>
 
     <% if Favorite.find_favorite(@user.id, mutter.id).blank? %>
