@@ -1,9 +1,11 @@
 class Mutter < ActiveRecord::Base
+  include AppConst
+
   belongs_to :user
   has_many :favorites
   belongs_to :return_mutter
 
-  validates_length_of(:mutter, :maximum => 140)
+  validates_length_of(:mutter, :maximum => MUTTER[:max_length])
 
   def self.serach_and_paginate(obj, page, order)
    #条件式作成
@@ -37,32 +39,36 @@ class Mutter < ActiveRecord::Base
                              :per_page => 2)
   end
 
-  def self.find_home(user_id)
+  def self.find_home(user_id, limit=MUTTER[:display_number])
     find(:all,
-         :conditions => ["(user_id = ? or user_id = (select follow_user_id from follows where user_id = ? and delete_flg = 0)) and delete_flg = 0", user_id, user_id],
+         :conditions => ["(user_id = ? or user_id = (select follow_user_id from follows where user_id = ? and delete_flg = ?)) and delete_flg = ?", user_id, user_id, DELETE_FLG[:unsetting], DELETE_FLG[:unsetting]],
+         :limit => limit,
          :order => "created_at DESC"
     )
   end
 
-  def self.find_favorites(user_id)
+  def self.find_favorites(user_id, limit=MUTTER[:display_number])
     find(:all,
          :include => :favorites,
-         :conditions => ["favorites.user_id = ? and favorites.delete_flg =0 and mutters.delete_flg = 0", user_id],
+         :conditions => ["favorites.user_id = ? and favorites.delete_flg = ? and mutters.delete_flg = ?", user_id, DELETE_FLG[:unsetting], DELETE_FLG[:unsetting]],
+         :limit => limit,
          :order => "mutters.created_at DESC"
     )
   end
 
-  def self.find_profile(user_id)
+  def self.find_profile(user_id, limit=MUTTER[:display_number])
     find(:all,
-         :conditions => ["user_id = ? and delete_flg = 0", user_id],
+         :conditions => ["user_id = ? and delete_flg = ?", user_id, DELETE_FLG[:unsetting]],
+         :limit => limit,
          :order => "created_at DESC"
     )
   end
 
-  def self.find_replies(user_id)
+  def self.find_replies(user_id, limit=MUTTER[:display_number])
     find(:all,
          :include => :return_mutter,
-         :conditions => ["return_mutters.user_id = ? and mutters.delete_flg = 0 and return_mutters.delete_flg = 0", user_id],
+         :conditions => ["return_mutters.user_id = ? and mutters.delete_flg = ? and return_mutters.delete_flg = ?", user_id, DELETE_FLG[:unsetting], DELETE_FLG[:unsetting]],
+         :limit => limit,
          :order => "mutters.created_at DESC"
     )
   end

@@ -1,6 +1,11 @@
 <% for mutter in @mutters %>
   <div>
     <%= h(mutter.user.name) %>
+    
+    <% unless mutter.return_mutter.blank? %>
+      @<%= h(mutter.return_mutter.user.name) %>
+    <% end %>
+    
     <%= h(mutter.mutter) %><br />
     <%= date_format_yyyymmddhhmmss(mutter.updated_at) %><br />
 

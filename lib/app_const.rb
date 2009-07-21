@@ -23,4 +23,9 @@ module AppConst
     :unsetting => 0,
     :setting => 1
   }
+
+  MUTTER = {
+    :max_length => 140,
+    :display_number => 10
+  }
 end

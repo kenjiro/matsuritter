@@ -1,3 +1,4 @@
 class ReturnMutter < ActiveRecord::Base
-  has_many :mutter
+  has_many :mutters
+  belongs_to :user
 end

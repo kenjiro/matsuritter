@@ -1,28 +1,26 @@
 class IndexController < ApplicationController
   include AppConst
   include AppDate
+  before_filter :set_user_and_count, :only => [:index, :favorite, :profile, :replies]
   after_filter :not_reply, :except => [:index, :reply]
 
   def index
     session[:user_id] = 1
-    @user = User.find(session[:user_id])
-    @mutters = Mutter.find_home(@user.id)
+
+    @mutters = Mutter.find_home(@user.id, @count)
     @reply_user = session[:reply][:user_name] + " に返事する" unless session[:reply].blank?
   end
 
   def favorite
-    @user = User.find(session[:user_id])
-    @mutters = Mutter.find_favorites(@user.id)
+    @mutters = Mutter.find_favorites(@user.id, @count)
   end
 
   def profile
-    @user = User.find(session[:user_id])
-    @mutters = Mutter.find_profile(@user.id)
+    @mutters = Mutter.find_profile(@user.id, @count)
   end
 
   def replies
-    @user = User.find(session[:user_id])
-    @mutters = Mutter.find_replies(@user.id)
+    @mutters = Mutter.find_replies(@user.id, @count)
   end
 
   def contribute
@@ -80,6 +78,11 @@ class IndexController < ApplicationController
   end
 
   private
+  def set_user_and_count
+    @user = User.find(session[:user_id])
+    @count = (params[:id].blank? ? 0 : params[:id].to_i) + MUTTER[:display_number]
+  end
+
   def not_reply
     session[:reply] = nil
   end
