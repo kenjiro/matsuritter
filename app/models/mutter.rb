@@ -41,9 +41,15 @@ class Mutter < ActiveRecord::Base
 
   def self.find_home(user_id, limit=MUTTER[:display_number])
     find(:all,
-         :conditions => ["(user_id = ? or user_id = (select follow_user_id from follows where user_id = ? and delete_flg = ?)) and delete_flg = ?", user_id, user_id, DELETE_FLG[:unsetting], DELETE_FLG[:unsetting]],
+         :include => :return_mutter,
+         :conditions => ["(mutters.user_id = ?
+                          or mutters.user_id in(select follow_user_id from follows where user_id = ? and delete_flg = ?))
+                         and (return_mutters.user_id in(select follow_user_id from follows where user_id = ? and delete_flg = ?) or return_mutters.user_id is null)
+                         and mutters.delete_flg = ?",
+                         user_id, user_id, DELETE_FLG[:unsetting], user_id, DELETE_FLG[:unsetting], DELETE_FLG[:unsetting]],
+#         :conditions => ["(user_id = ? or user_id in(select follow_user_id from follows where user_id = ? and delete_flg = ?)) and delete_flg = ?", user_id, user_id, DELETE_FLG[:unsetting], DELETE_FLG[:unsetting]],
          :limit => limit,
-         :order => "created_at DESC"
+         :order => "mutters.created_at DESC"
     )
   end
 
