@@ -6,7 +6,7 @@
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
-
+ 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -63,7 +63,7 @@ Rails::Initializer.run do |config|
     :secret      => '49bsadfaaejf1982u13eefj2fhaha84ad02ef33d566b75e46f180eb8064387'
   }
 
-  config.action_controller.session_store = :mem_cache_store
+ # config.action_controller.session_store = :mem_cache_store
   
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
@@ -87,3 +87,19 @@ memcache_servers = [ '127.0.0.1:11211' ]
 SESSION_CACHE = MemCache.new(memcache_servers,
                              memcache_options.merge(:namespace => "matsuritter-session-#{ENV['RAILS_ENV']}"))
 ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS.merge!('cache' => SESSION_CACHE)
+
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.default_charset = "iso-2022-jp"
+
+ActionMailer::Base.smtp_settings = {
+  :address => "<em>＜サーバーアドレス＞</em>",
+  :port => 25,
+  :domain => "<em>＜ドメイン名＞</em>",
+  :authentication => :login,
+  :user_name => "<em>＜ユーザー名＞</em>",
+  :password => "<em>＜パスワード＞</em>"
+}
+require 'will_paginate'
