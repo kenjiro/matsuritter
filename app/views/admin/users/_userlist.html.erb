@@ -1,0 +1,17 @@
+
+
+<table>
+<% if @users.size == 0 %>
+          <tr><td>現在、ユーザーは一名もいません</td></tr>
+          <% else %>
+          <tr><td>ユーザー名</td><td>メールアドレス</td><td>削除</td></tr>
+              <% @users.each do |user| %>
+          <tr>
+             <td><%=h user.name %></td><td><%=h user.mail %></td><td><%=h user.pass %></td>
+             <td><%= link_to('削除', {:action =>'delete', :id => user.id},{:method => :delete, :confirm => "削除いたしますか？"}) %>
+         
+          </tr>
+             <% end %>
+          <% end %>
+      </table>
+

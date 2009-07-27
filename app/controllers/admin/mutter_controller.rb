@@ -21,7 +21,7 @@ class Admin::MutterController < ApplicationController
       Date.new(session[:mutter_list]["end_date(1i)"].to_i,session[:mutter_list]["end_date(2i)"].to_i,session[:mutter_list]["end_date(3i)"].to_i) : Date.today
 
     #つぶやきDBより検索
-    @mutter_list = Mutter.serach_and_paginate(@mutter_serach, session[:mutter_list][:page], session[:mutter_list][:order])
+    @mutter_list = Mutter.search_and_paginate(@mutter_serach, session[:mutter_list][:page], session[:mutter_list][:order])
   end
 
   def delete

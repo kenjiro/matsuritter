@@ -1,0 +1,16 @@
+
+<center>
+送信完了<br>
+以下のメールアドレスにに送信いたしました。<br><br>
+
+<%=flash[:sender]%>
+<br>
+<br>
+送信しなかった人は、以下の人です。
+<%=flash[:notsend]%>
+<br>
+<br>
+<br>
+<br>
+<a href ="http://localhost:3000/admin/news_letter/">ＴＯＰへ</a>
+</center>

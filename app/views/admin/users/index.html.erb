@@ -1,22 +1,66 @@
-   
+<br>
+<br>
+<br>
+<center>
         <table>
           <tr>
-            <td>
+            <td colspan="3">
             <%= link_to 'ユーザー登録' ,:controller => 'admin/users', :action => 'new' %>
             </td>
           </tr>
-          <tr><td>
-           <%= text_field_with_auto_complete :user, :name, :value => @keyword %>
-          </tr></td>
+          <tr><td colspan="3">
+           <% form_for @user_search, :url=>{:action => 'search'} do |f| %>
+          </td></tr>
+          <tr>
+            <td><div align="right">名前:</div></td>
+            <td colspan="2"><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td><div align="right">メール:</div></td>
+            <td colspan="2"><%= f.text_field :mail %></td>
+          </tr>
+          <tr>
+            <td><div align="right">現在位置(完全一致):</div></td>
+            <td colspan="2"><%= f.text_field :now_place %></td>
+          </tr>
+          <tr>
+            <td><div align="right">ニュースレターのフラグ判定:</div></td>
+            <td><%= f.radio_button :follow_news_flg, 1 %>有効</td>
+            <td><%= f.radio_button :follow_news_flg, 0 %>無効</td>
+          </tr>
+          <tr>
+            <td colspan="3"><%= submit_tag '検索' %></td>
+          </tr>
+           <% end  %>
+              </table>
+          <br>
+          <br>
+          <br>
+          <h1>検索結果</h1>
+          <table>
           <% if @users.size == 0 %>
           <tr><td>現在、ユーザーは一名もいません</td></tr>
           <% else %>
-          <tr><td>ユーザー名</td><td>メールアドレス</td><td>削除</td></tr>
-              <% @users.each do |user| %>
           <tr>
-             <td><%=h user.name %></td><td><%=h user.mail %></td>
+            <td>ユーザー名
+                <%= link_to "↑", {:action => :search, :order => "users.name asc"} %>
+                <%= link_to "↓", {:action => :search, :order => "users.name desc"} %>
+            </td>
+            <td>メールアドレス
+                <%= link_to "↑", {:action => :search, :order => "users.mail asc"} %>
+                <%= link_to "↓", {:action => :search, :order => "users.mail desc"} %>
+            </td>
+            <td>削除
+            </td></tr>
+              <% @users.each do |user| %>
+            <tr>
+             <td><%=h user.name %></td><td><%=h user.mail %></td><td><%=h user.pass %></td>
              <td><%= link_to('削除', {:action =>'delete', :id => user.id},{:method => :delete, :confirm => "削除いたしますか？"}) %>
           </tr>
              <% end %>
           <% end %>
+          <tr><td colspan="3">
+           <center><%= will_paginate @users, :prev_label => '&#171;前', :next_label => '次&#187;' %></center/>
+          </td></tr>
       </table>
+  </center>

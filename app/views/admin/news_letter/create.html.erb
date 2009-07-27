@@ -1,0 +1,16 @@
+
+<br>
+<br>
+<br>
+<center>
+  <table border="1">
+    <% form_for @news_letter, :url=>{:action => 'mail'} do |f| %>
+   <tr><td>「ニュース」とか「お知らせ」とかカテゴリわけがほしいね</td>
+    <tr><td>タイトル:</td>
+        <td><div align="left"><%= f.text_field :subject %></div></td>
+    </tr>
+    <tr><td colspan="2"><%= f.text_area :body ,:cols => 60 , :rows => 10 %></td></tr>
+    <tr><td colspan="2"><%= submit_tag '送信',:confirm=>"送信いたしますか？" %></td></tr>
+    <%  end %>
+  </table>
+</center>

@@ -1,7 +1,7 @@
 class Mutter < ActiveRecord::Base
   belongs_to :user
 
-  def self.serach_and_paginate(obj, page, order)
+  def self.search_and_paginate(obj, page, order)
    #条件式作成
    condition_str = ""
    search_hash = Hash.new

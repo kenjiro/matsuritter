@@ -1,32 +1,14 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
+  <table>
+    <tr>
+      <td>
+      <%= link_to '新規作成' ,:action => 'create' %>
+      </td>
+      <td>
+      <%= link_to '送信済み' ,:action => 'history' %>
+      </td>
+  </table>
+<br>
+<br>
+<br>
+<a href ="http://localhost:3000/admin/main/">ＴＯＰへ</a>
 
-<html>
-  <head>
-
-  </head>
-      <body>
-        <table>
-          <tr>
-            <td>
-            <%= link_to '新規作成' ,:controller => 'admin/newsletter', :action => 'create' %>
-            </td>
-            <td>
-            <%= link_to '送信済み' ,:controller => 'admin/newsletter', :action => 'history' %>
-            </td>
-          
-          
-        </table>
-        
-        
-      </body>
-</html>
-
-
-
-
-
-
-<%= "index.rhtml" %>

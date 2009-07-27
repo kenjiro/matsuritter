@@ -1,0 +1,24 @@
+
+<br>
+<br>
+<br>
+<center>
+        <table>
+          <tr>
+            <td>
+            <%= link_to 'ユーザー登録' ,:controller => 'admin/users', :action => 'new' %>
+            <br>
+            <br>
+            </td>
+          </tr>
+          <tr><td>
+          <%= text_field_with_auto_complete :user, :name, :value => @keyword , :indicator=>"auto_complete_indicator", :min_chars=>1 %>
+          <%= image_tag("indicator.gif", :id=>'auto_complete_indicator',:style=>'display:none') %>
+          <%= observe_field :user_name, :frequency => 0.5,:update => :results ,:url => {:action => :search}, :with => "'name=' + value"%>
+
+            </tr></td>
+        </table>
+        <div id="results">
+        <%= render :partial => "userlist"%>
+        </div>
+  </center>

@@ -1,16 +1,39 @@
 
-
- 
-<% form_for @user, :url=>{:action => 'confirm'} do |f| %>
-    <%= f.error_messages %>
-    名前<br>
-    <%= f.text_field :name  %><br>
-    パスワード<br>
-    <%= f.text_field :pass %><br>
-     メール<br>
-    <%= f.text_field :mail %><br>
-    <%= f.submit '確認' %>
-<% end %>
+<br>
+<br>
+<br>
+<center>
+  <table>
+      <tr>
+        <td>
+         <% form_for @user, :url=>{:action => 'confirm'} do |f| %>
+       </td>
+      </tr>
+      <tr>
+        <td>
+          登録フォーム
+        </td>
+      </tr>
+      <tr>
+        <td>
+          名前<br>
+          <%= f.text_field :name  %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          メール<br>
+          <%= f.text_field :mail %><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <%= f.submit '確認' %>
+        <% end %>
+        </td>
+      </tr>
+   </table>
+</center>
 <%= link_to('ユーザー管理に戻る', :action =>'') %>
 
 

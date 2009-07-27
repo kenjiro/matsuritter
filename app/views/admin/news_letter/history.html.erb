@@ -1,0 +1,17 @@
+
+
+
+
+<br>
+<br>
+<br><center>
+<table>
+    <tr><td colspan="3">送信履歴</td></tr>
+  <% @news_letter.each do |letter| %>
+  <tr>
+    <td><%=h letter.id %></td><td><%=h letter.subject %></td><td><%=h letter.created_at %></td>
+  </tr>
+<%  end %>
+</table>
+  <a href ="http://localhost:3000/admin/news_letter/">ＴＯＰへ</a>
+</center>
