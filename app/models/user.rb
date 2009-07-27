@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_many   :mutters
+  has_many :mutters
+  has_many :return_mutters
+  has_many :follows
+  has_many :favorites
 
   def validate
     # I tried but returning errors do not work well!

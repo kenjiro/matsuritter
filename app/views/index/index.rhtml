@@ -1,0 +1,14 @@
+ホーム
+<%= link_to("プロフィール", :action => "profile") %>
+<%= link_to("お気に入り", :action => "favorite") %>
+<%= link_to("返事もらった", :action => "replies") %><br /><br />
+
+<%= @reply_user %>
+<% form_for :mutter_form, :url => {:action => :contribute} do |form| %>
+  <%= form.text_area(:mutter, :cols => 60, :rows => 3) %>
+  <%= form.text_field(:user_id, :value => @user.id) %>
+  <%= submit_tag "投稿する" %>
+<% end %>
+
+<%= render(:partial => "mutter") %>
+<%= link_to("もっと読む", :controller => "index", :id => @count)%>

@@ -1,0 +1,7 @@
+<%= link_to("ホーム", :controller => "index/index") %>
+プロフィール
+<%= link_to("お気に入り", :action => "favorite") %>
+<%= link_to("返事もらった", :action => "replies") %><br /><br />
+
+<%= render(:partial => "mutter") %>
+<%= link_to("もっと読む", :action => "profile", :id => @count)%>

@@ -3,7 +3,7 @@ class CreateMails < ActiveRecord::Migration
     create_table :mails do |t|
       t.integer :send_user_id ,:null => false
       t.integer :receive_user_id ,:null => false
-      t.integer :return_mails_id ,:null => false
+      t.integer :return_mail_id ,:null => false
       t.string :subject ,:limit => 500
       t.boolean :res_flg ,:null => false, :default  => 0
       t.integer :direct_receive_mail_id
