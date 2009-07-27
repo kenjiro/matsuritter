@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :other_url
       t.string :self_introduction
       t.string :now_place
-      t.boolean :follow_news_flg ,:default => 0
+      t.boolean :follow_news_flg ,:default => 1
       t.boolean :dm_news_flg ,:default => 0
       t.boolean :news_letter_flg ,:default => 0
       t.integer :design_theme_id ,:default => 0
